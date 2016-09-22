@@ -3,7 +3,8 @@ FROM nginx:alpine
 MAINTAINER Rob Contreras <rob.contreras@ekeepergroup.co.uk>
 
 ADD nginx.conf /etc/nginx/
-COPY conf/*.conf /etc/nginx/sites-available/
+#COPY conf/secure.site.conf /etc/nginx/sites-available/
+COPY conf/site.conf /etc/nginx/sites-available/
 
 RUN apk update \
     && apk upgrade \

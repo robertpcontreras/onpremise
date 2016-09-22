@@ -22,7 +22,7 @@ services:
     ports:
       - 80:80
     volumes:
-       - ./nginx/conf:/etc/nginx/sites-available
+       - ./data/nginx:/var/log/nginx
     links:
       - web
 
