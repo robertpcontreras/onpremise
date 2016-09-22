@@ -8,13 +8,24 @@ services:
     environment:
       # Run `docker-compose run web config generate-secret-key`
       # to get the SENTRY_SECRET_KEY value.
-      # SENTRY_SECRET_KEY: ''
+      SENTRY_SECRET_KEY: ''
       SENTRY_MEMCACHED_HOST: memcached
       SENTRY_REDIS_HOST: redis
       SENTRY_POSTGRES_HOST: postgres
       SENTRY_EMAIL_HOST: smtp
     volumes:
       - ./data/sentry:/var/lib/sentry/files
+
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+       - ./nginx/conf:/etc/nginx/sites-available
+    links:
+      - web
+
 
   smtp:
     image: tianon/exim4
@@ -37,8 +48,6 @@ services:
       - postgres
       - memcached
       - smtp
-    ports:
-      - '9000:9000'
 
   cron:
     extends: base
