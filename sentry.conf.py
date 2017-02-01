@@ -218,6 +218,15 @@ SENTRY_TSDB = 'sentry.tsdb.redis.RedisTSDB'
 
 SENTRY_DIGESTS = 'sentry.digests.backends.redis.RedisBackend'
 
+
+###########
+# Auth #
+###########
+
+# Disable registrstion logins
+
+SENTRY_FEATURES['auth:register'] = False
+
 ################
 # File storage #
 ################
